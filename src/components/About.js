@@ -1,3 +1,8 @@
+import User from "./User";
+import UserClass from "./UserClass";
+
+
+
 const About = () => {
     return (
         <div>
@@ -7,6 +12,8 @@ const About = () => {
             <h2>
                 this is About
             </h2>
+            {/* <User name={"Samarth function"} /> */}
+            <UserClass name={"Samarth class"}/>
         </div>
     );
 };
