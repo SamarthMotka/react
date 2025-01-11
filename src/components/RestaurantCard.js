@@ -1,7 +1,7 @@
 const RestaurantCard = (props) => {
   const { resData } = props;
   return (
-    <div className="res-card">
+    <div className="m-4 p-4 w-[200px] border rounded-md bg-slate-100">
       <div className="res-card-img">
         <img
           src={
@@ -10,12 +10,26 @@ const RestaurantCard = (props) => {
           }
         ></img>
       </div>
-      <h3>{resData.info.name}</h3>
+      <h3 className="font-bold text-lg my-2">{resData.info.name}</h3>
       <h4>{resData.info.cuisines.join(", ")}</h4>
       <h5>{resData.info.avgRating + " stars"}</h5>
       <h5>{resData.info.sla.deliveryTime + " minutes"} </h5>
     </div>
   );
 };
+
+
+export const withpromotedCard = (RestaurantCard) =>{
+  return (props) => {
+    return(
+      <div>
+        <label>Promted</label>
+        <RestaurantCard {...props}></RestaurantCard>
+      </div>
+    );
+  }
+}
+
+
 
 export default RestaurantCard;

@@ -1,29 +1,37 @@
 import {LOGO} from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
 
     const [btnName,setBtnName] = useState('Login');
 
+    const onlineStatus = useOnlineStatus();
 
     return (
-        <div className="header" >
+        <div className="flex justify-between bg-pink-100 shadow-lg mb-2" >
             <div className="logo">
-                <img src={LOGO} className="logo_image" ></img>
+                <img src={LOGO} className="w-24" ></img>
             </div>
-            <div className="nav-items">
-                <ul>
-                    <li>
+            <div className="flex items-center">
+                <ul className="flex  m-4">
+                    <li className="m-4">
+                        Online Status: {onlineStatus?"🟢":"🔴"}
+                    </li>
+                    <li className="m-4">
                         <Link to={"/"}>Home</Link>
                     </li>
-                    <li>
+                    <li className="m-4">
                         <Link to={"/about"}>About Us</Link>
                     </li>
-                    <li>
+                    <li className="m-4">
+                        <Link to={"/grocery"}>Grocery</Link>
+                    </li>
+                    <li className="m-4">
                         <Link to={"/contact"}>Contact</Link>
                     </li>
-                    <li>Cart</li>
+                    <li className="m-4">Cart</li>
                     <button className="login" onClick={() => {
                         btnName=="Logout"?setBtnName("Login"):setBtnName("Logout")
                     }} >{btnName} </button>
