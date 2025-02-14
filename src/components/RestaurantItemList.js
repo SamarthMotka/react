@@ -1,5 +1,17 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
+
 const RestaurantItemList = ({ items }) => {
+
+
 //   console.log(items[1].card.info);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item)=>{
+    dispatch(addItem(item))
+  }
+
   return (
     <div>
       {items.map((item) => (
@@ -21,7 +33,7 @@ const RestaurantItemList = ({ items }) => {
             </div>
             <div className="w-3/12 ">
               <div className="absolute mx-auto">
-                <button className="bg-white px-4 py-2 border rounded-lg">
+                <button className="bg-white px-4 py-2 border rounded-lg" onClick={()=>handleAddItem(item)}>
                   Add+
                 </button>
               </div>
